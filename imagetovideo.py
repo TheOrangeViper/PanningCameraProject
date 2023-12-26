@@ -15,12 +15,8 @@ def convert_images_to_video(image_folder, video_name='output_video.avi', fps=20)
         img_path = os.path.join(image_folder, image)
         frame = cv2.imread(img_path)
         video.write(frame)
-        print(frame)
-        os.remove(img_path)  # Remove the image after adding it to the video feed
-
-    # cv2.destroyAllWindows()
-    # video.release()
+        os.remove(img_path)
 
 if __name__ == "__main__":
-    image_folder = 'D:\Desktop\Projects\PanningCameraProject'
+    image_folder = './'
     convert_images_to_video(image_folder)
