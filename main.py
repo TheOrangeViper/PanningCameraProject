@@ -6,13 +6,7 @@ import numpy as np
 import mediapipe.python.solutions.hands as mpHands
 import mediapipe.python.solutions.drawing_utils as mpDraw
 
-#global variables
-global time_seconds
-global num_of_frames
-
 #constants
-time_seconds = 0
-num_of_frames = 0
 chdkptp_path = "./chdkptp/chdkptp.exe"
 image_folder = "D:\Desktop\Projects\PanningCameraProject"
 
@@ -50,26 +44,18 @@ def executeCommand(command):
 
 #Camera generate frame
 def generateFrame(lastFrame):
-    global time_seconds
-    global num_of_frames
-    time_seconds += 0.02
     executeCommand('lvdumpimg -vp="frame.ppm"')
     try:
         image = [img for img in os.listdir(image_folder) if img.endswith(".ppm")][0]
         img_path = os.path.join(image_folder, image)
         frame = cv2.imread(img_path)
         os.remove(img_path) 
-        # print("SUCCESS")
-        time.sleep(0.02) #shutter speed
-        num_of_frames += 1
         if frame.shape == shape:
             return frame
         else:
             print("PROBLEM HERE")
             raise Exception("Frame shape is not what it should be")
     except:
-        # print("FAILURE")
-        # time.sleep(0.02) #shutter speed
         return lastFrame
      
 
@@ -83,7 +69,6 @@ while True:
         except:
             frameRGB = cv2.cvtColor(lastFrame, cv2.COLOR_BGR2RGB)
         
-        print(frameRGB)
         results = hands.process(frameRGB)
         
         #Hand Tracking
@@ -127,10 +112,6 @@ while True:
                 # PINKY_DIP = 19
                 # PINKY_TIP = 20
         
-        #fps Counter
-        # fps = num_of_frames / time_seconds
-        
-        #Video Output
         cv2.imshow('frame', frame)
         if cv2.waitKey(10) == ord('q'):
             break
