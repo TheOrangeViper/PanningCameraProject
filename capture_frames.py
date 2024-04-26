@@ -4,7 +4,7 @@ import time
 
 global j
 # Path to chdkptp executable
-chdkptp_path = "./chdkptp/chdkptp.exe"
+chdkptp_path = "D:\Github Projects\PanningCameraProject\chdkptp\chdkptp.exe"
 
 p = subprocess.Popen([chdkptp_path, "-c", "-i"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 

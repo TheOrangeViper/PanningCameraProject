@@ -8,7 +8,7 @@ import mediapipe.python.solutions.drawing_utils as mpDraw
 
 #constants
 chdkptp_path = "./chdkptp/chdkptp.exe"
-image_folder = "D:\Desktop\Projects\PanningCameraProject"
+image_folder = "D:/Github Projects/PanningCameraProject"
 
 #Video Dimensions
 width = 640
@@ -87,7 +87,7 @@ while True:
                 print("Ring: " + str(RING_FINGER_TIP))
                 PINKY_TIP = (handLms.landmark[20].x * width, handLms.landmark[20].y * height)
                 print("Pinky: " + str(PINKY_TIP))
-                # executeCommand(".set_zoom_rel(10)")
+                executeCommand(".set_zoom_rel(10)")
                 
                 # Hand Landmark Locations
                 # WRIST = 0

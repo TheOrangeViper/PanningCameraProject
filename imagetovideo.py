@@ -3,7 +3,7 @@ import os
 
 def convert_images_to_video(image_folder, video_name='output_video.avi', fps=20):
     # print(os.listdir(image_folder))
-    images = [img for img in os.listdir(image_folder) if img.endswith(".ppm")]
+    images = [img for img in os.listdir(image_folder) if img.endswith(".jpg")]
     
     print(images)
     frame = cv2.imread(os.path.join(image_folder, images[0]))
